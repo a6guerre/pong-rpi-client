@@ -1,3 +1,6 @@
 [submodule "libenjoy"]
 	path = libenjoy
 	url = https://github.com/Tasssadar/libenjoy
+[submodule "sigfn"]
+	path = sigfn
+	url = https://github.com/maxtek6/sigfn.git
