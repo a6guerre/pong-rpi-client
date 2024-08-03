@@ -1,0 +1,3 @@
+[submodule "libenjoy"]
+	path = libenjoy
+	url = https://github.com/Tasssadar/libenjoy
