@@ -4,6 +4,8 @@ extern "C" {
     #include "libenjoy.h"
 }
 
+#include <sigfn.hpp>
+
 static void pong_rpi_client_send_data(uint32_t part_id, int16_t data)
 {
     // Send to client using RPC not yet implemented
@@ -74,11 +76,17 @@ int main(void)
         if(joy)
         {
             libenjoy_event ev;
-
+            bool loop;
+            
             printf("Success!\n");
             printf("Axes: %d btns: %d\n", libenjoy_get_axes_num(joy),libenjoy_get_buttons_num(joy));
+            
+            sigfn::handle(SIGINT,[&loop](int signum){
+                loop = false;
+            });
 
-            while(1)
+            loop = true;
+            while(loop)
             {
                 // Value data are not stored in library. if you want to use
                 // them, you have to store them
